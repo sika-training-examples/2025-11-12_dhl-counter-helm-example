@@ -13,6 +13,7 @@ spec:
       labels:
         app: {{.Release.Name}}-frontend
     spec:
+      {{ if .Values.frontendFailOnError }}
       initContainers:
         - name: wait-for-backend
           image: ghcr.io/sikalabs/slu:v0.94.0
@@ -20,6 +21,7 @@ spec:
             - /bin/sh
             - -c
             - slu wait-for http200 --url http://{{.Release.Name}}-backend
+      {{ end }}
       containers:
         - name: main
           image: ttl.sh/dhl/frontend
