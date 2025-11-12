@@ -9,6 +9,8 @@ backendReplicas: 2
 backendReplicasMax: null
 
 redisInitSleep: 0
+
+frontendFailOnError: 0
 frontendReplicas: 2
 frontendReplicasMax: null
 
